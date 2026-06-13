@@ -1,0 +1,115 @@
+.carousel {
+  position: relative;
+  margin-top: 3rem;
+  padding-inline: 2.5rem;
+}
+
+.carousel__viewport {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel__slide {
+  flex: 0 0 calc(100% / var(--visible-slides, 4));
+  padding-inline: 0.65rem;
+  box-sizing: border-box;
+}
+
+.carousel__card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.carousel__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(180, 150, 110, 0.14);
+}
+
+.carousel__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.carousel__card:hover .carousel__image {
+  transform: scale(1.04);
+}
+
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.carousel__btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  box-shadow: 0 4px 16px rgba(180, 150, 110, 0.2);
+}
+
+.carousel__btn--prev {
+  inset-inline-start: 0;
+}
+
+.carousel__btn--next {
+  inset-inline-end: 0;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.carousel__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.carousel__dot--active {
+  background: var(--color-gold);
+  transform: scale(1.25);
+}
+
+@media (max-width: 520px) {
+  .carousel {
+    padding-inline: 2rem;
+  }
+
+  .carousel__btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+  }
+}

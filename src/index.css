@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Arabic:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --color-ivory: #faf7f2;
+  --color-beige: #f0e8dc;
+  --color-beige-dark: #e8dfd0;
+  --color-white: #ffffff;
+  --color-gold: #b8956a;
+  --color-gold-light: #c4a77d;
+  --color-text: #3d3530;
+  --color-text-muted: #7a6f66;
+  --color-border: rgba(180, 150, 110, 0.2);
+
+  --font-display: 'Cormorant Garamond', 'Noto Sans Arabic', Georgia, serif;
+  --font-body: 'Outfit', 'Noto Sans Arabic', system-ui, sans-serif;
+
+  --container-max: 1200px;
+  --container-padding: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-ivory);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[dir='rtl'] body {
+  font-family: 'Noto Sans Arabic', var(--font-body);
+}
+
+[dir='rtl'] .hero__title,
+[dir='rtl'] .header__logo,
+[dir='rtl'] .section__title,
+[dir='rtl'] .product-card__name,
+[dir='rtl'] .footer__brand {
+  font-family: 'Noto Sans Arabic', var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.25rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.btn--primary {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+.btn--primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(184, 149, 106, 0.3);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+}

@@ -1,0 +1,23 @@
+.contact__inner {
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contact__text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.contact__btn {
+  display: inline-block;
+}
+
+@media (max-width: 480px) {
+  .contact__btn {
+    width: 100%;
+    text-align: center;
+  }
+}
