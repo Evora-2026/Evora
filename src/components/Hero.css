@@ -1,25 +1,37 @@
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 7rem 0 4rem;
-  background: linear-gradient(
-    160deg,
-    var(--color-ivory) 0%,
-    var(--color-beige) 50%,
-    var(--color-white) 100%
-  );
+  background: var(--hero-gradient);
+  overflow: hidden;
+  transition: background 0.45s ease;
+}
+
+.hero__glow {
+  position: absolute;
+  top: 20%;
+  inset-inline-end: 10%;
+  width: min(420px, 60vw);
+  height: min(420px, 60vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-glow) 0%, transparent 70%);
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 4rem;
 }
 
-.hero__content {
-  animation: fadeUp 0.8s ease forwards;
+.hero__content.reveal--visible {
+  animation: fadeUp 0.9s ease both;
 }
 
 .hero__logo {
@@ -37,21 +49,28 @@
   margin-bottom: 2.5rem;
 }
 
-.hero__cta {
-  animation: fadeUp 0.8s ease 0.2s both;
+.hero__image-wrap {
+  position: relative;
 }
 
-.hero__visual {
-  position: relative;
-  animation: fadeUp 0.8s ease 0.15s both;
+.hero__image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-glow) 0%, transparent 72%);
+  z-index: 0;
 }
 
 .hero__image {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-height: 75vh;
   object-fit: cover;
   border-radius: 2px;
-  box-shadow: 0 24px 60px rgba(180, 150, 110, 0.18);
+  box-shadow: 0 24px 60px var(--color-shadow);
+  animation: float 6s ease-in-out infinite;
 }
 
 @media (max-width: 900px) {
@@ -79,5 +98,12 @@
 @media (max-width: 480px) {
   .hero {
     padding-top: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__glow,
+  .hero__image {
+    animation: none;
   }
 }

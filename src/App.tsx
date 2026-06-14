@@ -1,11 +1,14 @@
 import { LanguageProvider } from './context/LanguageProvider';
+import { ThemeProvider } from './context/ThemeProvider';
 import Home from './pages/Home';
 
 function App() {
   return (
-    <LanguageProvider>
-      <Home />
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <Home />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

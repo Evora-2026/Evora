@@ -86,6 +86,8 @@ export const translations = {
     },
     footer: '© 2026 EVORA — Crafted with warmth.',
     langToggle: 'العربية',
+    themeLight: 'Switch to light mode',
+    themeDark: 'Switch to dark mode',
   },
   ar: {
     nav: {
@@ -171,5 +173,7 @@ export const translations = {
     },
     footer: '© ٢٠٢٦ إيفورا — صُنعت بدفء.',
     langToggle: 'English',
+    themeLight: 'التبديل إلى الوضع النهاري',
+    themeDark: 'التبديل إلى الوضع الليلي',
   },
 } as const;

@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Arabic:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap');
 
-:root {
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
   --color-ivory: #faf7f2;
   --color-beige: #f0e8dc;
   --color-beige-dark: #e8dfd0;
@@ -10,7 +13,45 @@
   --color-text: #3d3530;
   --color-text-muted: #7a6f66;
   --color-border: rgba(180, 150, 110, 0.2);
+  --color-header-bg: rgba(255, 252, 247, 0.92);
+  --color-shadow: rgba(180, 150, 110, 0.18);
+  --color-shadow-strong: rgba(184, 149, 106, 0.3);
+  --color-glow: rgba(196, 167, 125, 0.12);
+  --color-overlay: rgba(0, 0, 0, 0.25);
+  --hero-gradient: linear-gradient(
+    160deg,
+    var(--color-ivory) 0%,
+    var(--color-beige) 50%,
+    var(--color-white) 100%
+  );
+}
 
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-ivory: #141110;
+  --color-beige: #1e1916;
+  --color-beige-dark: #181412;
+  --color-white: #262019;
+  --color-gold: #c4a77d;
+  --color-gold-light: #d4b88e;
+  --color-text: #f0e8dc;
+  --color-text-muted: #a89888;
+  --color-border: rgba(196, 167, 125, 0.22);
+  --color-header-bg: rgba(20, 17, 16, 0.94);
+  --color-shadow: rgba(0, 0, 0, 0.45);
+  --color-shadow-strong: rgba(196, 167, 125, 0.2);
+  --color-glow: rgba(196, 167, 125, 0.18);
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --hero-gradient: linear-gradient(
+    160deg,
+    #141110 0%,
+    #1e1916 45%,
+    #262019 100%
+  );
+}
+
+:root {
   --font-display: 'Cormorant Garamond', 'Noto Sans Arabic', Georgia, serif;
   --font-body: 'Outfit', 'Noto Sans Arabic', system-ui, sans-serif;
 
@@ -39,6 +80,13 @@ body {
   background: var(--color-ivory);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+}
+
+[data-theme='dark'] body {
+  background: var(--color-ivory);
 }
 
 [dir='rtl'] body {
@@ -48,7 +96,6 @@ body {
 [dir='rtl'] .hero__title,
 [dir='rtl'] .header__logo,
 [dir='rtl'] .section__title,
-[dir='rtl'] .product-card__name,
 [dir='rtl'] .footer__brand {
   font-family: 'Noto Sans Arabic', var(--font-display);
   letter-spacing: 0.05em;
@@ -78,7 +125,13 @@ img {
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    color 0.35s ease;
 }
 
 .btn--primary {
@@ -86,10 +139,28 @@ img {
   color: var(--color-white);
 }
 
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+}
+
 .btn--primary:hover {
   background: var(--color-gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(184, 149, 106, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px var(--color-shadow-strong);
+}
+
+.btn--primary:hover::after {
+  transform: translateX(120%);
 }
 
 @keyframes fadeUp {
@@ -103,8 +174,46 @@ img {
   }
 }
 
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes dividerExpand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
 @media (max-width: 480px) {
   :root {
     --container-padding: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn--primary::after {
+    display: none;
   }
 }

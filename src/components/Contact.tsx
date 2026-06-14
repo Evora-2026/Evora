@@ -1,5 +1,6 @@
 import { useLanguage } from '../context/useLanguage';
 import { INSTAGRAM_DISPLAY, INSTAGRAM_URL } from '../config/social';
+import Reveal from './Reveal';
 import './Section.css';
 import './Contact.css';
 
@@ -9,17 +10,19 @@ export default function Contact() {
   return (
     <section id="contact" className="section section--contact">
       <div className="container contact__inner">
-        <h2 className="section__title">{t.contact.title}</h2>
-        <div className="section__divider" />
-        <p className="contact__text">{t.contact.text}</p>
-        <a
-          href={INSTAGRAM_URL}
-          className="btn btn--primary contact__btn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t.contact.cta} — {INSTAGRAM_DISPLAY}
-        </a>
+        <Reveal variant="scale">
+          <h2 className="section__title">{t.contact.title}</h2>
+          <div className="section__divider section__divider--animate" />
+          <p className="contact__text">{t.contact.text}</p>
+          <a
+            href={INSTAGRAM_URL}
+            className="btn btn--primary contact__btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.contact.cta} — {INSTAGRAM_DISPLAY}
+          </a>
+        </Reveal>
       </div>
     </section>
   );

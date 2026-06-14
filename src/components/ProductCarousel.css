@@ -30,7 +30,7 @@
 
 .carousel__card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(180, 150, 110, 0.14);
+  box-shadow: 0 14px 36px var(--color-shadow);
 }
 
 .carousel__image {
@@ -68,7 +68,7 @@
 .carousel__btn:hover {
   border-color: var(--color-gold);
   color: var(--color-gold);
-  box-shadow: 0 4px 16px rgba(180, 150, 110, 0.2);
+  box-shadow: 0 4px 16px var(--color-shadow);
 }
 
 .carousel__btn--prev {
